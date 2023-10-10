@@ -2,11 +2,6 @@ import { RequestHandler } from "express";
 import ItemService from "../services/ItemService";
 import Item from "../interfaces/Item";
 
-interface ItemParams
-{
-    id: string;
-}
-
 interface IItemController
 {
     getAll: RequestHandler<Item>;
@@ -18,8 +13,7 @@ const ItemController: IItemController =
 {
     async getAll(req, res)
     {
-        await ItemService.getAll();
-        res.json(req.body);
+        res.json(await ItemService.getAll());
     },
 
     async createItem(req, res)

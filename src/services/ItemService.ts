@@ -17,10 +17,11 @@ interface IItemService
 const ItemService: IItemService = 
 {
     async getAll() {
-        const items = await ItemModel.find().exec();
+        const items = await ItemModel.find({}).exec();
+        console.log(items)
 
         if (items.length == 0)
-            throw new Error("Error en la busqueda");
+            console.log("No hay items para mostrar.");
 
         return items;
     },
@@ -34,6 +35,7 @@ const ItemService: IItemService =
           ...item,
           id: newId,
           image: data.url,
+          soldQty: 0,
           createdAt: new Date()
       });
 
@@ -55,6 +57,7 @@ const ItemService: IItemService =
             
             if (response.ok) {
               const responseData = await response.json();
+              console.log(responseData.data)
               return responseData.data;
             } else {
               console.error('Error uploading image:', response.status, response.statusText);

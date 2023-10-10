@@ -13,6 +13,7 @@ const itemSchema = new Schema<Item>({
     longDesc: String,
     ageFrom: Number,
     ageTo: Number,
+    soldQty: Number,
     image: String,
     createdAt: Date,
 });

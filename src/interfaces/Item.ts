@@ -10,6 +10,7 @@ export default interface Item {
     longDesc: string;
     ageFrom: number;
     ageTo: number;
+    soldQty: number;
     image: string;
     createdAt: Date;
 };
